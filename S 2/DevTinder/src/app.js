@@ -125,40 +125,68 @@ app.use("/user", [(req, res, next) => {
 
 // ----------------------------------------------------------------------------
 
-// Route Handler can also mix and match 
-// Suppose u want to wrap only R1, R2 inside [] (Array)
-app.use("/user", [(req, res, next) => {
-    // Route Handler
-    console.log("Handling the route user!!");             
-    // res.send("Route Handler 1");  
-    next();
-}, (req, res, next) => {
-    // Route Handler 2
-    console.log("Handling the route user 2!!");             
-    // res.send("Route Handler 2");
-    next();  
-}], (req, res, next) => {
-    // Route Handler 3
-    console.log("Handling the route user 3!!");             
-    // res.send("Route Handler 3");  
-    next();
-}, (req, res, next) => {
-    // Route Handler 4
-    console.log("Handling the route user 4!!");             
-    // res.send("Route Handler 4");  
-    next();
-}, (req, res, next) => {
-    // Route Handler 5
-    console.log("Handling the route user 5!!");             
-    // res.send("Route Handler 5");  
-    next();
-}, (req, res, next) => {
-    // Route Handler 6
-    console.log("Handling the route user 6!!");             
-    res.send("Route Handler 6");  
+// // Route Handler can also mix and match 
+// // Suppose u want to wrap only R1, R2 inside [] (Array)
+// app.use("/user", [(req, res, next) => {
+//     // Route Handler
+//     console.log("Handling the route user!!");             
+//     // res.send("Route Handler 1");  
+//     next();
+// }, (req, res, next) => {
+//     // Route Handler 2
+//     console.log("Handling the route user 2!!");             
+//     // res.send("Route Handler 2");
+//     next();  
+// }], (req, res, next) => {
+//     // Route Handler 3
+//     console.log("Handling the route user 3!!");             
+//     // res.send("Route Handler 3");  
+//     next();
+// }, (req, res, next) => {
+//     // Route Handler 4
+//     console.log("Handling the route user 4!!");             
+//     // res.send("Route Handler 4");  
+//     next();
+// }, (req, res, next) => {
+//     // Route Handler 5
+//     console.log("Handling the route user 5!!");             
+//     // res.send("Route Handler 5");  
+//     next();
+// }, (req, res, next) => {
+//     // Route Handler 6
+//     console.log("Handling the route user 6!!");             
+//     res.send("Route Handler 6");  
+// });
+
+// ----------------------------------------------------------------------------
+
+// Another way of defining a Route
+
+// app.get("/user", (req, res, next) => {
+//     // Route Handler
+//     console.log("Handling the route user!!");             
+//     next();
+// });
+
+// app.get("/user", (req, res, next) => {
+//     // Route Handler 2
+//     console.log("Handling the route user2!!");             
+//     res.send("Route Handler 2");  
+// });
+
+// ----------------------------------------------------------------------------
+
+// Why do we need MiddleWare
+
+app.get("/admin/getAllData", (req, res, next) => {
+    res.send("All Data Send!!");
+
 });
 
+app.get("/admin/deleteUser", (req, res, next) => {
+    res.send("Deleted a user");
 
+});
 
 
 app.listen(7777, () => {
